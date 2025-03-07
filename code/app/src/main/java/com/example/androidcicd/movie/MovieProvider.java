@@ -6,6 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MovieProvider {
     private static MovieProvider movieProvider;
@@ -65,6 +66,12 @@ public class MovieProvider {
     }
 
     public void addMovie(Movie movie) {
+        for (Movie m : movies) {
+            if (Objects.equals(m.getTitle(), movie.getTitle())) {
+                throw new IllegalArgumentException("Movie already exists!");
+            }
+        }
+
         DocumentReference docRef = movieCollection.document();
         movie.setId(docRef.getId());
         if (validMovie(movie, docRef)) {
