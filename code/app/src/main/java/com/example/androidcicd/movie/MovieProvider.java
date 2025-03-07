@@ -66,6 +66,7 @@ public class MovieProvider {
     }
 
     public void addMovie(Movie movie) {
+
         for (Movie m : movies) {
             if (Objects.equals(m.getTitle(), movie.getTitle())) {
                 throw new IllegalArgumentException("Movie already exists!");
