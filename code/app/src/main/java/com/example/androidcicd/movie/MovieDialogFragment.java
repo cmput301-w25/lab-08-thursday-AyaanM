@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.example.androidcicd.utils.TextValidator;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MovieDialogFragment extends DialogFragment {
+    private EditText AddMovieName;
     private EditText editMovieName;
     private EditText editMovieGenre;
     private EditText editMovieYear;
@@ -55,6 +57,7 @@ public class MovieDialogFragment extends DialogFragment {
             editMovieYear.setText(String.valueOf(movie.getYear()));
         }
         else {movie = null;}
+
 
         editMovieName.addTextChangedListener(new TextValidator(editMovieName) {
             @Override
